@@ -1,0 +1,6 @@
+05-30-2020 Updates: Version 2.3
+1. Laptop Screen Size Adoptation
+
+New Feature: Value Validation Version 1
+- Pairing of a Link's URL and Link's Target Value..
+- If Pair does not match, Link Checker will throw an error (Whole line will turn red).

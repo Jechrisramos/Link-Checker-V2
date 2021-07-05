@@ -1,0 +1,29 @@
+{
+	"manifest_version": 2,
+	"name": "Link Checker V.2.3",
+	"version": "0.2",
+	"permissions": [
+      "activeTab"
+    ],
+	"description": "Allows Developer to go through and check each link present in an open Web Page. User has the priviledge to check Link content such as Name, HTML Reference and Link Target.",
+	"icons": 
+	{
+	"128": "ASSETS/IMAGES/icon.png"
+	},
+	"content_scripts": [
+		{
+		"matches": [
+			"<all_urls>"
+		],
+		"css": ["ASSETS/CSS/style.css"],
+		"js": ["ASSETS/JS/content.js"]
+	}
+],
+	"author": "Jechris Ramos",
+	"background": {
+		"scripts" : ["ASSETS/JS/background.js"]
+	},
+	"browser_action":{
+		"default_icon": "ASSETS/IMAGES/favicon.png"
+	}
+}
