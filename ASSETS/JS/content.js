@@ -78,12 +78,12 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 									id: 'filterBtn2',
 									value: 'header a',
 								},
-								{
-									type: 'BUTTON',
-									name: 'Content',
-									id: 'filterBtn3',
-									value: '#fl-main-content a',
-								},
+								// {
+								// 	type: 'BUTTON',
+								// 	name: 'Content',
+								// 	id: 'filterBtn3',
+								// 	value: '#fl-main-content a',
+								// },
 								{	
 									type: 'BUTTON',
 									name: 'Footer',
@@ -185,10 +185,10 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 						filter('header a');
 					});
 
-					document.getElementById('filterBtn3').addEventListener("click", () => {
-						document.getElementById('cntContentTableContainer').innerHTML = '';
-						filter('body a');
-					});
+					// document.getElementById('filterBtn3').addEventListener("click", () => {
+					// 	document.getElementById('cntContentTableContainer').innerHTML = '';
+					// 	filter('body a');
+					// });
 
 					document.getElementById('filterBtn4').addEventListener("click", () => {
 						document.getElementById('cntContentTableContainer').innerHTML = '';
@@ -201,9 +201,9 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 							case 'header a':
 								generateData(data);
 								break;
-							case 'body a':
-								generateData(data);
-								break;
+							// case 'body a':
+							// 	generateData(data);
+							// 	break;
 							case 'footer a':
 								generateData(data);
 								break;
