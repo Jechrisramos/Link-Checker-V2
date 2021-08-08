@@ -1,10 +1,8 @@
 
-chrome.runtime.onMessage.addListener(function(message, sender, sendResponse){
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 	if(message.connection_key === 1){
 	console.log(message.text);
 
-		
-		
 		// creating new div for the output data
 		let	link_container = document.createElement("div");
 		link_container.setAttribute("id", "link_container");
@@ -44,23 +42,11 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse){
 			contentHeader.appendChild(hdrTitleTxt);
 			hdrTitleTxt.appendChild(hdrTitleTxtValue);
 
-			let hdrTitleTxtSpan = document.createElement('span');
-			hdrTitleTxtSpan.setAttribute("id", "hdrTitleTxtSpan");
-			hdrTitleTxtSpan.setAttribute("class", "contentText");
-			let hdrTitleTxtSpanValue = document.createTextNode("V2");
-			hdrTitleTxt.appendChild(hdrTitleTxtSpan);
-			hdrTitleTxtSpan.appendChild(hdrTitleTxtSpanValue);
-
 			let hdrTitleColumn = document.createElement('div');
 			hdrTitleColumn.setAttribute("id", "hdrTitleColumn");
 			hdrTitleColumn.setAttribute("class", "float-left-element");
 			contentHeader.appendChild(hdrTitleColumn);
 
-				let axLogo = document.createElement('img');
-				axLogo.src = 'http://www.affinityx.com/sites/all/themes/affinityx2/logo.png';
-				axLogo.setAttribute("id", "axLogo");
-				axLogo.setAttribute("class", "axLogoClass contentText");
-				hdrTitleColumn.appendChild(axLogo);
 						
 			let hdrOptionColumn = document.createElement('div');
 			hdrOptionColumn.setAttribute("id", "hdrOptionColumn");
@@ -106,7 +92,7 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse){
 								}
 							];
 
-				const filter_buttons_queries = filterButtons.map(function(item, index, array){
+				const filter_buttons_queries = filterButtons.map( (item, index, array) => {
 				
 					let filterOptionChild = document.createElement('div');
 					filterOptionChild.setAttribute("class", "float-left-element filterOptionChild");
@@ -189,33 +175,33 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse){
 				// let contentLinks = Array.from(document.querySelectorAll('a'));;
 					filter('a');
 
-					document.getElementById('filterBtn1').addEventListener("click", function(){
+					document.getElementById('filterBtn1').addEventListener("click", () => {
 						document.getElementById('cntContentTableContainer').innerHTML = '';
 						filter('a');
 					});
 
-					document.getElementById('filterBtn2').addEventListener("click", function(){
+					document.getElementById('filterBtn2').addEventListener("click", () => {
 						document.getElementById('cntContentTableContainer').innerHTML = '';
 						filter('header a');
 					});
 
-					document.getElementById('filterBtn3').addEventListener("click", function(){
+					document.getElementById('filterBtn3').addEventListener("click", () => {
 						document.getElementById('cntContentTableContainer').innerHTML = '';
-						filter('#fl-main-content a');
+						filter('body a');
 					});
 
-					document.getElementById('filterBtn4').addEventListener("click", function(){
+					document.getElementById('filterBtn4').addEventListener("click", () => {
 						document.getElementById('cntContentTableContainer').innerHTML = '';
 						filter('footer a');
 					});
 
-				function filter(data){
+				function filter(data) {
 					if(data.length){
-						switch(data){
+						switch(data){ //upon clicking buttons, result will base on the selected section.
 							case 'header a':
 								generateData(data);
 								break;
-							case '#fl-main-content a':
+							case 'body a':
 								generateData(data);
 								break;
 							case 'footer a':
@@ -229,7 +215,7 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse){
 							if(rawData.length){
 								let filterValue = Array.from(document.querySelectorAll(rawData));
 								
-								const mapped_links_href_content = filterValue.map(function(item, index, array){
+								const mapped_links_href_content = filterValue.map((item, index, array) => {
 
 											let contentRow = document.createElement('div');
 											contentRow.setAttribute("id", "linkRow"+index);
@@ -255,7 +241,7 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse){
 												let nameTxtValue = '';
 													// this condition triggers if links are social media links or phone no or email or blank
 													if(item.ariaLabel === 'Facebook' || item.host === 'www.facebook.com' || item.host === 'facebook.com'){
-														nameTxt.style.color = "#2d84ef";
+														nameTxt.style.color = "#87bdff";
 														nameTxtValue = document.createTextNode('Facebook');
 													}else if(item.ariaLabel === 'Instagram' || item.host === 'www.instagram.com' || item.host === 'instagram.com'){
 														nameTxt.style.color = "#f57d97";
@@ -276,7 +262,7 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse){
 														nameTxt.style.color = "#ff616a";
 														nameTxtValue = document.createTextNode('Pinterest');
 													}else if(item.ariaLabel === 'GoDaddy' || item.host === 'www.godaddy.com' || item.host === 'godaddy.com'){
-														nameTxt.style.color = "#88e7e9";
+														nameTxt.style.color = "#95f2f4";
 														nameTxtValue = document.createTextNode('GoDaddy');
 													}else if(item.protocol === 'tel:'){
 															nameTxt.style.color = "#f6a021";
@@ -295,7 +281,7 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse){
 														nameTxt.style.fontStyle = 'italic';
 														nameTxtValue = document.createTextNode('Google Maps');
 													}else if(item.text === "" || item.innerText === "" || item.textContent === ""){
-														nameTxt.style.color = "#59bf9d";
+														nameTxt.style.color = "#fff";
 														nameTxtValue = document.createTextNode('No Label');			
 													}
 													else{
@@ -324,7 +310,7 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse){
 												
 												if(item.protocol === 'tel:'){ // Phone/Telephone Validation wrong target match
 													if (!phonePattern.test(item.href)){									
-														hrefTxt.style.color = "#D31818";
+														hrefTxt.style.color = "#fe8080";
 													}else{
 														hrefTxt.style.color = "#ffffff";
 													}
@@ -332,7 +318,7 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse){
 
 												if(item.protocol === 'sms:'){ // Phone/Telephone Validation wrong target match
 													if (!phonePattern.test(item.href)){									
-														hrefTxt.style.color = "#D31818";
+														hrefTxt.style.color = "#fe8080";
 													}else{
 														hrefTxt.style.color = "#ffffff";
 													}
@@ -342,7 +328,7 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse){
 													// Regex
 													// let emailPattern = /[a-z]{6}+\:[a-z0-9_]+\@[a-z 0-9 -]+\.(com|edu|net|ph)/g;
 													if (!emailPattern.test(item.href)){									
-														hrefTxt.style.color = "#D31818";
+														hrefTxt.style.color = "#fe8080";
 													}else{
 														hrefTxt.style.color = "#ffffff";
 													}
@@ -375,7 +361,7 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse){
 												
 												// if(item.protocol === 'tel:'){ // Phone/Telephone Validation wrong target match
 												// 	if (!phonePattern.test(item.href)){									
-												// 		hrefTxt.style.color = "#D31818";
+												// 		hrefTxt.style.color = "#fe8080";
 												// 	}else{
 												// 		hrefTxt.style.color = "#ffffff";
 												// 	}
@@ -385,7 +371,7 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse){
 												// 	// Regex
 												// 	// let emailPattern = /[a-z]{6}+\:[a-z0-9_]+\@[a-z 0-9 -]+\.(com|edu|net|ph)/g;
 												// 	if (!emailPattern.test(item.href)){									
-												// 		hrefTxt.style.color = "#D31818";
+												// 		hrefTxt.style.color = "#fe8080";
 												// 	}else{
 												// 		hrefTxt.style.color = "#ffffff";
 												// 	}
@@ -395,67 +381,67 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse){
 												//+++++ Value Validations Ver 2: June 06 2020 10pm+++++//
 												if(item.protocol === 'tel:' && item.target === '_blank'){ // Phone/Telephone Validation wrong target match
 													if (!phonePattern.test(item.href)){									
-														hrefTxt.style.color = "#D31818";
+														hrefTxt.style.color = "#fe8080";
 													}else{
 														hrefTxt.style.color = "#ffffff";
 													}
-														targetTxt.style.color = "#D31818";
+														targetTxt.style.color = "#fe8080";
 												}else if(item.protocol === 'sms:' && item.target === '_blank'){
 													if (!phonePattern.test(item.href)){									
-														hrefTxt.style.color = "#D31818";
+														hrefTxt.style.color = "#fe8080";
 													}else{
 														hrefTxt.style.color = "#ffffff";
 													}
-														targetTxt.style.color = "#D31818";
+														targetTxt.style.color = "#fe8080";
 												}else if(item.protocol === 'mailto:' && item.target === '_blank'){ // Email Validation wrong target match
 													
 													// Regex
 													// let emailPattern = /[a-z]{6}+\:[a-z0-9_]+\@[a-z 0-9 -]+\.(com|edu|net|ph)/g;
 													if (!emailPattern.test(item.href)){									
-														hrefTxt.style.color = "#D31818";
+														hrefTxt.style.color = "#fe8080";
 													}else{
 														hrefTxt.style.color = "#ffffff";
 													}
-													targetTxt.style.color = "#D31818";
+													targetTxt.style.color = "#fe8080";
 													
 												}else if(item.host === 'goo.gl' && item.target === '_self'){ //for maps
-													nameTxt.style.color = "#D31818";
-													targetTxt.style.color = "#D31818";
+													nameTxt.style.color = "#fe8080";
+													targetTxt.style.color = "#fe8080";
 												}else if(item.host === 'www.facebook.com' && item.target === '_self'){ // Map validation wrong target match
-													idTxt.style.color = "#D31818";
-													nameTxt.style.color = "#D31818";
-													hrefTxt.style.color = "#D31818";
-													targetTxt.style.color = "#D31818";
+													idTxt.style.color = "#fe8080";
+													nameTxt.style.color = "#fe8080";
+													hrefTxt.style.color = "#fe8080";
+													targetTxt.style.color = "#fe8080";
 												}else if(item.host === 'www.instagram.com' && item.target === '_self'){ // Map validation wrong target match
-													idTxt.style.color = "#D31818";
-													nameTxt.style.color = "#D31818";
-													hrefTxt.style.color = "#D31818";
-													targetTxt.style.color = "#D31818";
+													idTxt.style.color = "#fe8080";
+													nameTxt.style.color = "#fe8080";
+													hrefTxt.style.color = "#fe8080";
+													targetTxt.style.color = "#fe8080";
 												}else if(item.host === 'twitter.com' && item.target === '_self'){ // Map validation wrong target match
-													idTxt.style.color = "#D31818";
-													nameTxt.style.color = "#D31818";
-													hrefTxt.style.color = "#D31818";
-													targetTxt.style.color = "#D31818";
+													idTxt.style.color = "#fe8080";
+													nameTxt.style.color = "#fe8080";
+													hrefTxt.style.color = "#fe8080";
+													targetTxt.style.color = "#fe8080";
 												}else if(item.host === 'linkedin.com' && item.target === '_self'){ // Map validation wrong target match
-													idTxt.style.color = "#D31818";
-													nameTxt.style.color = "#D31818";
-													hrefTxt.style.color = "#D31818";
-													targetTxt.style.color = "#D31818";
+													idTxt.style.color = "#fe8080";
+													nameTxt.style.color = "#fe8080";
+													hrefTxt.style.color = "#fe8080";
+													targetTxt.style.color = "#fe8080";
 												}else if(item.host === 'youtube.com' && item.target === '_self'){ // Map validation wrong target match
-													idTxt.style.color = "#D31818";
-													nameTxt.style.color = "#D31818";
-													hrefTxt.style.color = "#D31818";
-													targetTxt.style.color = "#D31818";
+													idTxt.style.color = "#fe8080";
+													nameTxt.style.color = "#fe8080";
+													hrefTxt.style.color = "#fe8080";
+													targetTxt.style.color = "#fe8080";
 												}else if(item.host === 'yelp.com' && item.target === '_self'){ // Map validation wrong target match
-													idTxt.style.color = "#D31818";
-													nameTxt.style.color = "#D31818";
-													hrefTxt.style.color = "#D31818";
-													targetTxt.style.color = "#D31818";
+													idTxt.style.color = "#fe8080";
+													nameTxt.style.color = "#fe8080";
+													hrefTxt.style.color = "#fe8080";
+													targetTxt.style.color = "#fe8080";
 												}else if(item.host === 'pinterest.com' && item.target === '_self'){ // Map validation wrong target match
-													idTxt.style.color = "#D31818";
-													nameTxt.style.color = "#D31818";
-													hrefTxt.style.color = "#D31818";
-													targetTxt.style.color = "#D31818";
+													idTxt.style.color = "#fe8080";
+													nameTxt.style.color = "#fe8080";
+													hrefTxt.style.color = "#fe8080";
+													targetTxt.style.color = "#fe8080";
 												}else{
 													// console.log('Job Well Done! Prior Links are good.');
 												} //what a lengthy one...
@@ -529,12 +515,12 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse){
 						ftrDescription.appendChild(ftrDescriptionValue);
 		// end of footer section
 
-		let btn = document.getElementById("closeBtnColumn").addEventListener("click", function(){
+		let btn = document.getElementById("closeBtnColumn").addEventListener("click", () => {
 			link_container.style.display = 'none';
 			location.reload();
 		});
 
-		document.addEventListener('keyup', function(event){
+		document.addEventListener('keyup', event => {
 				if(event.key === "Escape"){
 					link_container.style.display = 'none';
 					location.reload();

@@ -39,17 +39,23 @@ div#link_container{
 	left: 0;
 	overflow-y: none;
 	overflow-x: none;
-	background-color: rgba(0,0,0,0.55);
-	padding: 20px;
+	background: rgb(131,58,180);
+	background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,0.7035189075630253) 50%, rgba(252,176,69,0.5) 100%);
+	padding: 30px;
 }
 
 #link_content_box{
-	background-color: rgba(0, 0, 0, 0.9);;
+	background: rgba( 0, 0, 0, 0.45 );
+	box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+	backdrop-filter: blur( 15.0px );
+	-webkit-backdrop-filter: blur( 15.0px );
+	border-radius: 10px;
+	border: 1px solid rgba( 255, 255, 255, 0.18 );
 	color: #fff;
-	width: 100%;
+	width: 80%;
 	padding: 30px;
-	border-radius: 20px;
-	box-shadow: 0px 20px 20px -20px	rgba(0, 0, 0, 0.55);
+	display: block;
+	margin: 0 auto;
 }
 
 #closeBtnColumn{
@@ -57,7 +63,7 @@ div#link_container{
 	position: fixed;
  	top: 10px;
     right: 10px;
-    font-size: 25px;
+    font-size: 30px;
     /*margin: 20px;*/
     padding: 10px;
    	width: 50px;
@@ -85,13 +91,16 @@ span#spanClose {
 
 #closeBtnColumn:hover, #closeBtnColumn:focus{
 	cursor: pointer;
-	background-color: rgba(255, 255, 255, 0.85);
+	background: rgba( 0, 0, 0, 0.35 );
+	backdrop-filter: blur( 15px );
+	-webkit-backdrop-filter: blur( 10.5px );
 	transition: 0.30s;
-	color: #000;
+	color: #fff;
 }
 
 .contentText{
 	margin: 0;
+	line-height: 1.25;
 	color: #fff;
 }
 
@@ -102,19 +111,19 @@ div#contentHeader {
 }
 
 p#hdrPageName, .filterOptionChild label {
-    font-size: 14px;
+    font-size: 15px;
     padding-left: 5px;
 }
 
 h2#hdrTitleTxt {
     position: fixed;
-    top: 34px;
-    font-size: 12px;
+    /*top: 50px;*/
+    font-size: 18px;
     font-weight: bold;
 }
 
 span#hdrTitleTxtSpan {
-    font-size: 9px;
+    font-size: 11px;
     margin-left: 2px;
 }
 
@@ -152,7 +161,7 @@ button.filterButtons{
 	margin: 0;
 	padding: 4px 10px !important;
 	cursor: pointer;
-	font-size: 13px;
+	font-size: 15px;
 	font-family: 'Manrope', sans-serif !important;
 	font-weight: bold;
 	text-transform: uppercase;
@@ -160,13 +169,15 @@ button.filterButtons{
 	background-color: transparent !important;
 	color: #fff !important;
 	transition: 0.23s;
-	border: 2px solid #a7a7a7 !important;
+	border: 1px solid #fff !important;
 	border-radius: 0px;	
 }
 
-button.filterButtons:hover, button.filterButtons:active, button.filterButtons:focus{
-	background-color: transparent !important;
-	border: 2px solid #732a74 !important;
+button.filterButtons:hover, 
+button.filterButtons:active, 
+button.filterButtons:focus {
+	background: rgba( 255, 255, 255, 0.25 ) !important;
+	border: 1px solid #fff !important;
 	color: #fff !important;
 	position: static;
 	transition: 0.23s;
@@ -190,7 +201,7 @@ h2#hdrTitleTxt, h2#ftrTitleTxt {
 }
 
 h2#ftrTitleTxt{
-	font-size: 16px;
+	font-size: 18px;
 	font-weight: bold;
 }
 
@@ -200,10 +211,6 @@ span#ftrTitleTxtSpan {
     text-transform: none;
     font-weight: normal;
     letter-spacing: 0;
-}
-
-img#axLogo{
-	display: block;
 }
 
 #hdrOptionColumn h3, #hdrTitleColumn h3, .mainContentColumn h4{
@@ -279,6 +286,7 @@ div.contentIDColumn{
 
 p.contentText.LinkValue {
     font-size: 13px;
+    line-height: 1.45;
 }
 
 div.contentHrefColumn > p{
@@ -306,14 +314,16 @@ div#contentTitleRow {
 
 div.contentRow{
 	width: 100%;
-	padding: 1.8px 0;
+	margin-bottom: 3px;
+	padding: 2px 0;
 	display: flex;
   	align-items: center;
   	text-align: left;
 }
 
-div.contentRow:hover, div.contentRow:focus{
-	background-color: #272727;
+div.contentRow:hover, 
+div.contentRow:focus {
+	background: rgba( 0, 0, 0, 0.25 );
 	transition: 0.08s;
 }
 
